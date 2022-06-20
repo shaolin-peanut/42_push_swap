@@ -1,37 +1,48 @@
-DIR_OBJ =./build
-SRC = ${addprefix src/, main.c \
-	  error.c}
-OBJ=${addprefix ${DIR_OBJ}/, ${notdir${SRC:.c=.o}}}
-HEAD = src/push_swap.h
 NAME = push_swap
-CFLAGS = -Wall -Werror -Wextra 
-OFLAGS = -fsanitize=address -g3
+
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
-all:	${NAME}
+AR = ar -rc
 
-$(NAME):	${OBJ} ${HEAD}
-	${CC} ${OFLAGS} ${OBJ} ${HEAD} -o ${NAME}
+SRCS_DIR = ./src
 
-${DIR_OBJ}/%.o : %.c | ${DIR_OBJ}
-	${CC} ${CFLAGS} -c $< -o $@
+OBJS_DIR = ./objs
+INC_DIR = .
+LIBFT_DIR = ./libft
+LIBFT = libft.a
 
-${DIR_OBJ} :
-	mkdir -p ${DIR_OBJ}
+SRCS = main.c \
+		processing.c \
 
-clean:
-	rm -f $(OBJ)
+OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-fclean:	clean
-	rm -f $(NAME)
+vpath %.c $(SRCS_DIR)
 
-re:	fclean all
+RM = rm -f
 
-lldb: ${OBJ}
-	${CC} ${SRC} -g -o ${NAME}
-	lldb ${NAME}
+all : $(NAME)
 
-norm:
-	norminette ${SRC} ${HEAD}
+$(NAME) : $(OBJS)
+	echo "Compling libft..."
+	@$(MAKE) -C $(LIBFT_DIR)
+	echo "Libft has been compiled..."
+	echo "Compiling push_swap"
+	@$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft
+	echo "push_swap has been compiled..."
 
-.PHONY: all fclean clean re
+$(OBJS_DIR) :
+	@mkdir -p $(OBJS_DIR)
+
+$(OBJS_DIR)/%.o : %.c | $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -o $@ -I $(INC_DIR) -I$(LIBFT_DIR) -c $^
+
+clean :
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	#@$(MAKE) -C fclean
+	@$(RM) -r $(OBJS_DIR)
+
+fclean : clean
+	@$(RM) $(NAME)
+
+re : fclean all

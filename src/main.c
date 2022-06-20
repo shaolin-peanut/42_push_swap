@@ -6,7 +6,7 @@ int main(int argc, char **argv)
     {
         return (0);
     }
-    else if (error_check(argv))
+    else if (check_and_place(argv))
     {
         write(2, "Error\n", 7);
     }
