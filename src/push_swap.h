@@ -9,17 +9,43 @@ typedef struct s_meta	t_meta;
 struct s_list
 {
 	int	num;
-	t_list	*previous;
 	t_list	*next;
+	t_list	*previous;
 };
 
 struct s_meta
 {
 	t_list	*list_a_head;
 	t_list	*list_a_butt;
+	int		a_size;
 	t_list	*list_b_head;
 	t_list	*list_b_butt;
+	int		b_size;
 };
 
-int check_and_place(char    **argv);
-void	errormsg(char	*msg);
+// processing.c
+int war_room(int	c, char    **argv);
+// operations.c
+int	sa(t_meta	*pkg);
+int	sb(t_meta	*pkg);
+int	pa(t_meta	*pkg);
+int	pb(t_meta	*pkg);
+int	ra(t_meta	*pkg);
+int	rb(t_meta	*pkg);
+int	rra(t_meta	*pkg);
+int	rrb(t_meta	*pkg);
+int	rr(char	sign, t_meta	*pkg);
+void	ss(t_meta	*pkg);
+// list_utils.c
+t_list	*init_list();
+t_list	*put(int	num, t_meta	*pkg);
+void	connect_ab(t_list	*a, t_list	*b);
+void	update_list_butt(t_meta	*pkg);
+t_list	*save_and_cut_head(char	id, t_meta	*pkg);
+// memory_utils.c
+t_meta	*init_pkg(t_meta	*pkg);
+void	errormsg(char	*msg, t_meta	*pkg);
+void	free_list(char	id, t_list	*list);
+void	free_all(t_meta	*pkg);
+// dev_utils.c
+void	print_list(int	id, t_meta	*pkg);

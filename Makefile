@@ -14,6 +14,10 @@ LIBFT = libft.a
 
 SRCS = main.c \
 		processing.c \
+		operations.c \
+		operations_bis.c \
+		memory_utils.c \
+		list_utils.c 
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
 

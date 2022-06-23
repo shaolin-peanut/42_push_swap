@@ -1,72 +1,55 @@
 #include "push_swap.h"
 
-// TODOS
-// - Return 1 on success, -1 on failure
-// - convert argument[i] to string with atoi, if atoi fails, return -1
-// - check if size is over int min and under int max
-// - check if there's another identical already in the list, if so return -1
-t_list	*init_list()
-{
-	t_list	*list;
-
-	list = (t_list *) malloc(sizeof(t_list *) * 1);
-	if (list == NULL)
-		errormsg("Malloc error\n");
-	return (list);
-}
-
-t_meta	*init_pkg(t_meta	*pkg)
-{
-	pkg = (t_meta *)malloc(sizeof(t_meta *) * 1);
-	pkg->list_a_head = NULL;
-	pkg->list_a_head = init_list();
-	pkg->list_a_butt = NULL;
-	pkg->list_b_head = NULL;
-	pkg->list_b_head = init_list();
-	pkg->list_b_butt = NULL;
-	return (pkg);
-}
-
-void	errormsg(char	*msg)
+int	check_repetitions(int	num, t_meta	*pkg)
 {
 	int	i;
+	t_list	*current_node;
 
 	i = -1;
-	while (msg[i++])
-		write(2, &msg[i], 1);
-	exit(EXIT_FAILURE);
-}
-
-int	check_repetitions(char	*num, t_meta	*meta)
-{
-	int	i;
-	t_list	*tmp;
-
-	i = -1;
-	tmp = meta->list_a_head;
-	(void) tmp;
-	(void) num;
-
+	current_node = pkg->list_a_head;
+	while (current_node != NULL)
+	{
+		if (num == current_node->num)
+			errormsg("Don't enter the same number twice!\n", pkg);
+		current_node = current_node->next;
+	}
+	i = 1;
 	return (i);
 }
 
-int	check_and_place(char	**argv)
+// Where all the cool stuff is coordinated
+int	war_room(int c, char	**argv)
 {
 	int	i;
+	int	tmp_num;
 	t_meta	*pkg;
 
-	i = 0;
-	pkg = 0;
+	i = c;
+	pkg = NULL;
 	pkg = init_pkg(pkg);
-	while (argv[i++])
+	tmp_num = 0;
+	while (--i > 0)
 	{
-		if (ft_atoi(argv[i]) == 0 || ft_strncmp(argv[i], "0", 2) != 0)
-			errormsg("Error!\n");
-		if (check_repetitions(argv[i], pkg) != 0)
-			errormsg("Error!\n");
-		/*else
-			push(pkg, 0);*/
+		// What should I do about 0s?
+		// Don't forget to check min and max int
+		//printf("tmp_num:%d\n", tmp_num);
+		if ((tmp_num = ft_atoi(argv[i])) == 0)
+			errormsg("Error!\n", pkg);
+		if (check_repetitions(tmp_num, pkg) == -1)
+			errormsg("Error!\n", pkg);
+		else
+			pkg->list_a_head = put(tmp_num, pkg);
 	}
+	// ICI ON TESTE MAGEULE
+	pb(pkg);
+	pb(pkg);
+	pb(pkg);
+	pb(pkg);
+	rr(0, pkg);
+	rr(-1, pkg);
+	rr(-1, pkg);
+	// FIN
+	free_all(pkg);
 	return (1);
 }
 
