@@ -27,10 +27,10 @@ void	errormsg(char *msg, t_meta	*pkg)
 
 void	free_all(t_meta	*pkg)
 {
-	printf("Size of a: %d\n", pkg->a_size);
-	printf("Size of b: %d\n", pkg->b_size);
-	printf("pkg->list_a_butt: %p\n", pkg->list_a_butt);
-	printf("pkg->list_b_butt: %p\n", pkg->list_b_butt);
+	//printf("Size of a: %d\n", pkg->a_size);
+	//printf("Size of b: %d\n", pkg->b_size);
+	//printf("pkg->list_a_butt: %p\n", pkg->list_a_butt);
+	//printf("pkg->list_b_butt: %p\n", pkg->list_b_butt);
 	if (pkg->list_a_head != 0)
 		free_list('a', pkg->list_a_head);
 	if (pkg->list_b_head != 0)
@@ -43,6 +43,7 @@ void	free_list(char	id, t_list *list)
 {
 	t_list	*current_node;
 
+	(void) id;
 	current_node = NULL;
 	while(list != NULL)
 	{

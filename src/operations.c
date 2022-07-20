@@ -17,7 +17,8 @@ int	sa(t_meta	*pkg)
 	node_a->previous = node_b;
 	node_b->previous = NULL;
 	node_a->next = node_c;
-	node_c->previous = node_a;
+	if (node_c != NULL)
+		node_c->previous = node_a;
 	pkg->list_a_head = node_b;
 	return (0);
 }
@@ -39,7 +40,8 @@ int	sb(t_meta	*pkg)
 	node_a->previous = node_b;
 	node_b->previous = NULL;
 	node_a->next = node_c;
-	node_c->previous = node_a;
+	if (node_c != NULL)
+		node_c->previous = node_a;
 	pkg->list_b_head = node_b;
 	return (0);
 }

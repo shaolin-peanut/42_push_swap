@@ -49,3 +49,9 @@ void	free_list(char	id, t_list	*list);
 void	free_all(t_meta	*pkg);
 // dev_utils.c
 void	print_list(int	id, t_meta	*pkg);
+// small_algorithms.c
+void	sort_two(t_meta	*pkg);
+void	sort_three(t_meta	*pkg);
+void	bubble_sort(t_meta	*pkg);
+// utils.c
+int		is_sorted(t_list	*head);

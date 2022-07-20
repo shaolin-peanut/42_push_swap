@@ -30,27 +30,17 @@ int	war_room(int c, char	**argv)
 	tmp_num = 0;
 	while (--i > 0)
 	{
-		// What should I do about 0s?
 		// Don't forget to check min and max int
-		//printf("tmp_num:%d\n", tmp_num);
 		if ((tmp_num = ft_atoi(argv[i])) == 0)
 			errormsg("Error!\n", pkg);
 		if (check_repetitions(tmp_num, pkg) == -1)
 			errormsg("Error!\n", pkg);
 		else
 			pkg->list_a_head = put(tmp_num, pkg);
+		//printf("tmp_num:%d\n", tmp_num);
 	}
-	// ICI ON TESTE MAGEULE
-	pb(pkg);
-	pb(pkg);
-	pb(pkg);
-	pb(pkg);
-	rr(0, pkg);
-	rr(-1, pkg);
-	rr(-1, pkg);
-	// FIN
+	bubble_sort(pkg);
 	free_all(pkg);
 	return (1);
 }
 
-// push(argv[i], 1);

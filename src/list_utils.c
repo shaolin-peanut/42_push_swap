@@ -19,7 +19,7 @@ t_list	*put(int	num, t_meta	*pkg)
 
 	new = init_list(pkg);
 	new->num = num;
-	printf("new->num:%d\n", new->num);
+	//printf("new->num:%d\n", new->num);
 	// if there's an existing node, link new to current top.
 	if (pkg->list_a_head != NULL)
 	{
