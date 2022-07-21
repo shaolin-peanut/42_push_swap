@@ -1,5 +1,50 @@
 #include "push_swap.h"
 
+void	qwhacksort(t_meta	*pkg)
+{
+	int i;
+	int j;
+	int	pivot;
+
+	i = -1;
+	j = 0;
+	while (++i < 100 && is_sorted(pkg->list_a_head) == -1)
+	{
+		// Split A with pivot
+		j = pkg->a_size;
+		pivot = (list_min(pkg->list_a_head) + list_max(pkg->list_a_head)) / 2;
+		while (j-- > -1)
+		{
+			if (pkg->list_a_head->num <= pivot)
+				pb(pkg);
+			else
+				ra(pkg);
+		}
+		// Split B with pivot
+		j = pkg->b_size;
+		pivot = (list_min(pkg->list_b_head) + list_max(pkg->list_b_head)) / 4;
+		if (is_sorted(pkg->list_a_head) == 1)
+			break;
+		while (j-- > -1 && pkg->list_b_head != NULL)
+		{
+			if (pkg->list_b_head->num > pivot)
+			{
+				pa(pkg);
+			}
+			else if (pkg->list_b_butt->num > pivot)
+			{
+				rrb(pkg);
+				pa(pkg);
+			}
+			else
+				rb(pkg);
+		}
+	}
+	i = 0;
+//	while (i < pkg->b_size)
+//		pa(pkg);
+}
+
 void	if_swap_a(t_meta	*pkg, int	a, int b)
 {
 	if (a > b)
@@ -38,13 +83,20 @@ void	sort_three(t_meta *pkg)
 	if_swap_a(pkg, tmp->num, tmp->next->num);
 }
 
-void	bubble_sort(t_meta	*pkg)
+/*void	bubble_sort(t_meta	*pkg)
 {
+	int	i;
+
 	while (is_sorted(pkg->list_a_head) == -1)
 	{
-		ra(pkg);
-		if (pkg->list_a_head->num > pkg->list_a_head->next->num)
-			sa(pkg);
+		i = pkg->a_size;
+		while (i > 0)
+		{
+			ra(pkg);
+			if (pkg->list_a_head->num > pkg->list_a_head->next->num)
+				sa(pkg);
+			i--;
+		}
 	}
 	printf("sorted\n");
-}
+}*/

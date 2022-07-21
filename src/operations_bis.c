@@ -11,6 +11,7 @@ int	ra(t_meta	*pkg)
 	pkg->list_a_butt->next = head;
 	head->previous = pkg->list_a_butt;
 	pkg->list_a_butt = head;
+	printf("ra\n");
 	return (0);
 }
 
@@ -25,6 +26,7 @@ int	rb(t_meta	*pkg)
 	pkg->list_b_butt->next = head;
 	head->previous = pkg->list_b_butt;
 	pkg->list_b_butt = head;
+	printf("rb\n");
 	return (0);
 }
 
@@ -66,6 +68,7 @@ int	rrb(t_meta	*pkg)
 	pkg->list_b_head->previous = butt;
 	pkg->list_b_head = butt;
 	update_list_butt(pkg);
+	printf("rrb\n");
 	return (0);
 }
 

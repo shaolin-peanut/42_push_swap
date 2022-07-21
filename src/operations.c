@@ -71,6 +71,7 @@ int	pa(t_meta	*pkg)
 	update_list_butt(pkg);
 	pkg->a_size++;
 	pkg->b_size--;
+	printf("pa\n");
 	return (0);
 }
 
@@ -92,5 +93,6 @@ int	pb(t_meta	*pkg)
 	update_list_butt(pkg);
 	pkg->a_size--;
 	pkg->b_size++;
+	printf("pb\n");
 	return (0);
 }

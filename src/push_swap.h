@@ -52,6 +52,8 @@ void	print_list(int	id, t_meta	*pkg);
 // small_algorithms.c
 void	sort_two(t_meta	*pkg);
 void	sort_three(t_meta	*pkg);
-void	bubble_sort(t_meta	*pkg);
+void	qwhacksort(t_meta	*pkg);
 // utils.c
 int		is_sorted(t_list	*head);
+int		list_min(t_list	*list);
+int		list_max(t_list	*list);
