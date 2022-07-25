@@ -12,15 +12,17 @@ int	is_sorted(t_list	*head)
 	return (1);
 }
 
-int	list_min(t_list	*list)
+int	list_min(t_list	*list, int limit)
 {
 	int	min;
+	int	i;
 
+	i = -1;
 	if (list)
 		min = list->num;
 	else
 		return (min = 0);
-	while (list != NULL)
+	while (list != NULL && ++i < limit)
 	{
 		if (list->num < min)
 			min = list->num;
@@ -29,19 +31,26 @@ int	list_min(t_list	*list)
 	return (min);
 }
 
-int	list_max(t_list	*list)
+int	list_max(t_list	*list, int limit)
 {
 	int	max;
+	int	i;
 
+	i = -1;
 	if (list)
 		max = list->num;
 	else
 		return (max = 0);
-	while (list != NULL)
+	while (list != NULL && ++i < limit)
 	{
 		if (list->num > max)
 			max = list->num;
 		list = list->next;
 	}
 	return (max);
+}
+
+int	choose_pivot(t_list	*list, int limit)
+{
+	return (list_min(list, limit) + list_max(list, limit) / 2);
 }

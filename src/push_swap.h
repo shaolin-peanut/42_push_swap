@@ -50,10 +50,11 @@ void	free_all(t_meta	*pkg);
 // dev_utils.c
 void	print_list(int	id, t_meta	*pkg);
 // small_algorithms.c
+void	fast_sort(t_meta	*pkg);
 void	sort_two(t_meta	*pkg);
-void	sort_three(t_meta	*pkg);
-void	qwhacksort(t_meta	*pkg);
+void	sort_three(t_meta	*pkg, int one, int two, int three);
 // utils.c
 int		is_sorted(t_list	*head);
-int		list_min(t_list	*list);
-int		list_max(t_list	*list);
+int		list_min(t_list	*list, int limit);
+int		list_max(t_list	*list, int limit);
+int		choose_pivot(t_list	*list, int limit);

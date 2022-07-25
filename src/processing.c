@@ -39,7 +39,8 @@ int	war_room(int c, char	**argv)
 			pkg->list_a_head = put(tmp_num, pkg);
 		//printf("tmp_num:%d\n", tmp_num);
 	}
-	qwhacksort(pkg);
+	if (is_sorted(pkg->list_a_head) == -1)
+		fast_sort(pkg);
 	free_all(pkg);
 	return (1);
 }

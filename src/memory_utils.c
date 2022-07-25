@@ -47,7 +47,7 @@ void	free_list(char	id, t_list *list)
 	current_node = NULL;
 	while(list != NULL)
 	{
-		//printf("%c:%p:num %d->prev:%p\n", ft_toupper(id), list, list->num, list->previous);
+		printf("%c:%p:num %d->prev:%p\n", ft_toupper(id), list, list->num, list->previous);
 		current_node = list;
 		list = list->next;
 		free(current_node);
