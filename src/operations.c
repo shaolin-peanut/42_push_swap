@@ -20,6 +20,7 @@ int	sa(t_meta	*pkg)
 	if (node_c != NULL)
 		node_c->previous = node_a;
 	pkg->list_a_head = node_b;
+	printf("sa\n");
 	return (0);
 }
 
@@ -43,6 +44,7 @@ int	sb(t_meta	*pkg)
 	if (node_c != NULL)
 		node_c->previous = node_a;
 	pkg->list_b_head = node_b;
+	printf("sb\n");
 	return (0);
 }
 

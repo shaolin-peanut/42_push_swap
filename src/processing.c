@@ -40,7 +40,7 @@ int	war_room(int c, char	**argv)
 		//printf("tmp_num:%d\n", tmp_num);
 	}
 	if (is_sorted(pkg->list_a_head) == -1)
-		fast_sort(pkg);
+		sort(pkg);
 	free_all(pkg);
 	return (1);
 }

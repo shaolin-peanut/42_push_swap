@@ -23,6 +23,8 @@ struct s_meta
 	int		b_size;
 };
 
+// algorithm.c
+void	sort(t_meta	*pkg);
 // processing.c
 int war_room(int	c, char    **argv);
 // operations.c

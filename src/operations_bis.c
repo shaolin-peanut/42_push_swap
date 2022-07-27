@@ -48,6 +48,7 @@ int	rra(t_meta	*pkg)
 	pkg->list_a_head->previous = butt;
 	pkg->list_a_head = butt;
 	update_list_butt(pkg);
+	printf("rra\n");
 	return (0);
 }
 

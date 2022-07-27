@@ -19,6 +19,7 @@ SRCS = main.c \
 		memory_utils.c \
 		list_utils.c \
 		small_algorithms.c \
+		algorithm.c \
 		utils.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
