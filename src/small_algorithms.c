@@ -11,19 +11,19 @@ void	if_swap_a(t_meta	*pkg, int	a, int b)
 
 void	sort_two(t_meta	*pkg)
 {
-	int	num1;
-	int	num2;
-
-	num1 = pkg->list_a_head->num;
-	num2 = pkg->list_a_head->next->num;
-	if_swap_a(pkg, num1, num2);
-}
-
-void	update_onetwothree(t_meta	*pkg, int	*one, int	*two, int	*three)
-{
 	t_list	*tmp;
 
 	tmp = pkg->list_a_head;
+	int	num1;
+	int	num2;
+
+	num1 = tmp->num;
+	num2 = tmp->next->num;
+	if_swap_a(pkg, num1, num2);
+}
+
+void	update_onetwothree(t_list	*tmp, int	*one, int	*two, int	*three)
+{
 	*one = tmp->num;
 	tmp = tmp->next;
 	*two = tmp->num;
@@ -44,73 +44,94 @@ void	fast_sort(t_meta *pkg)
 	if (pkg->a_size < 2)
 		exit (EXIT_FAILURE);
 	//while (is_sorted(pkg->list_a_head) == -1)
-	sort_three(pkg, one, two, three);
+	sort_three_a(pkg, one, two, three);
+}
+
+void	sort_six(t_meta	*pkg)
+{
+	int	size;
+	int	one;
+	int	two;
+	int three;
+	int	pivot;
+
+	one = 0;
+	two = 0;
+	three = 0;
+	size = pkg->a_size;
+	pivot = choose_pivot(pkg->list_a_head, pkg->a_size);
+	if (size == 6 || size == 5)
+	{
+		while (pkg->a_size != 3)
+		{
+			if (pkg->list_a_head->num < pivot)
+				pb(pkg);
+			else
+				ra(pkg);
+		}
+		if (pkg->b_size == 2)
+			sort_two(pkg);
+		else
+			sort_three_b(pkg, one, two, three);
+		sort_three_a(pkg, one, two, three);
+		while (pkg->b_size != 0)
+			pa(pkg);
+	}
+	else if (size == 5)
+	{
+	}
+	//else if (size == 4)
+
 }
 
 
 // if (one > three)
 // swap a and c
 // which is done 
-void	sort_three(t_meta *pkg, int	one, int two, int three)
+void	sort_three_a(t_meta *pkg, int	one, int two, int three)
 {
 	if (one > three)
 	{
 		sa(pkg);
 		rra(pkg);
+		//ra(pkg);
+		//ra(pkg);
 	}
-	update_onetwothree(pkg, &one, &two, &three);	
+	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
 	if (one > two)
-	{
 		sa(pkg);
-	}
-	update_onetwothree(pkg, &one, &two, &three);	
+	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
 	if (two > three)
 	{
 		ra(pkg);
 		sa(pkg);
 		rra(pkg);
 	}
-	update_onetwothree(pkg, &one, &two, &three);	
+	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
 	if (one > two)
-	{
 		sa(pkg);
-	}
-	/*if (two > onedd && one > three)
-		sa(pkg);
-	else if (two > three && three > one)
-		rra(pkg);
-	else if (one > three && three > two)
-	{
-		rra(pkg);
-		sa(pkg);
-	}
-	else if (three > two && two > one)
-	{
-		ra(pkg);
-		sa(pkg);
-	}
-	else
-	{
-		sa(pkg);
-		rra(pkg);
-		sa(pkg);
-	}*/
+	printf("a sorted successfully (hopefully)");
 }
 
-/*void	bubble_sort(t_meta	*pkg)
+void	sort_three_b(t_meta *pkg, int	one, int two, int three)
 {
-	int	i;
-
-	while (is_sorted(pkg->list_a_head) == -1)
+	if (one < three)
 	{
-		i = pkg->a_size;
-		while (i > 0)
-		{
-			ra(pkg);
-			if (pkg->list_a_head->num > pkg->list_a_head->next->num)
-				sa(pkg);
-			i--;
-		}
+		sb(pkg);
+		rrb(pkg);
 	}
-	printf("sorted\n");
-}*/
+	update_onetwothree(pkg->list_b_head, &one, &two, &three);	
+	if (one < two)
+		sb(pkg);
+	update_onetwothree(pkg->list_b_head, &one, &two, &three);	
+	if (two < three)
+	{
+		rb(pkg);
+		sb(pkg);
+		rrb(pkg);
+	}
+	update_onetwothree(pkg->list_b_head, &one, &two, &three);	
+	if (one < two)
+		sb(pkg);
+	printf("b sorted successfully (hopefully)");
+}

@@ -1,5 +1,21 @@
 #include "push_swap.h"
 
+int get_sqrt(int nbr)
+{
+	int sqrt;
+
+	if (nbr < 0)
+		return (0);
+	sqrt = 0;
+	while (sqrt * sqrt < nbr)
+	{
+		sqrt++;
+		if (sqrt * sqrt == nbr)
+			return (sqrt / 1.5);							
+	}
+	return (sqrt / 1.5);					
+}
+
 int	is_sorted(t_list	*head)
 {
 	while (head != NULL && head->next != NULL)
@@ -52,5 +68,8 @@ int	list_max(t_list	*list, int limit)
 
 int	choose_pivot(t_list	*list, int limit)
 {
-	return (list_min(list, limit) + list_max(list, limit) / 2);
+	int	range;
+
+	range = list_min(list, limit) + list_max(list, limit);
+	return (range / get_sqrt(limit));
 }
