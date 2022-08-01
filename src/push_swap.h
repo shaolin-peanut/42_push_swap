@@ -27,10 +27,18 @@ struct s_meta
 void	sort(t_meta	*pkg);
 // small_algorithms.c
 void	fast_sort(t_meta	*pkg);
+<<<<<<< HEAD
 void	sort_two(t_meta *pkg);
 void	sort_three(t_meta	*pkg, int one, int two, int three);
 void	split_in_groups(t_meta	*pkg);
 int		choose_pivot(t_list	*list, int limit);
+=======
+void	sort_six(t_meta	*pkg);
+void	sort_two(t_meta *pkg);
+void	sort_three_a(t_meta	*pkg, int one, int two, int three);
+void	sort_three_b(t_meta	*pkg, int one, int two, int three);
+void	split_in_groups(t_meta	*pkg);
+>>>>>>> ebd1836cd884a375ae73a28d776ce7abc29f8f2a
 // processing.c
 int war_room(int	c, char    **argv);
 // list_utils.c
@@ -61,3 +69,7 @@ int	rra(t_meta	*pkg);
 int	rrb(t_meta	*pkg);
 int	rr(char	sign, t_meta	*pkg);
 void	ss(t_meta	*pkg);
+<<<<<<< HEAD
+=======
+int		choose_pivot(t_list	*list, int limit);
+>>>>>>> ebd1836cd884a375ae73a28d776ce7abc29f8f2a
