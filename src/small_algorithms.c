@@ -43,11 +43,11 @@ void	fast_sort(t_meta *pkg)
 	three = 0;
 	if (pkg->a_size < 2)
 		exit (EXIT_FAILURE);
-	//while (is_sorted(pkg->list_a_head) == -1)
-	sort_three_a(pkg, one, two, three);
+	//while (is_sorted(pkg->list_a_head) != 1)
+	sort_three(pkg, one, two, three);
 }
 
-void	sort_six(t_meta	*pkg)
+/*void	sort_six(t_meta	*pkg)
 {
 	int	size;
 	int	one;
@@ -77,49 +77,44 @@ void	sort_six(t_meta	*pkg)
 		while (pkg->b_size != 0)
 			pa(pkg);
 	}
-	else if (size == 5)
-	{
-	}
-	//else if (size == 4)
-
-}
+}*/
 
 
 // if (one > three)
 // swap a and c
 // which is done 
-void	sort_three_a(t_meta *pkg, int	one, int two, int three)
+void	sort_three(t_meta *pkg, int	one, int two, int three)
 {
-	if (one > two && two < three && one < three)
+	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
+	if (one > two && two < three && three < one)
 	{
-		sa(pkg);
+		ra(pkg);
 	}
-	else if (one > two && two > three && one > three)
+	else if (one > two && two > three && three < one)
 	{
 		sa(pkg);
 		rra(pkg);
 	}
-	else if (one > two && two < three && one > three)
+	else if (one > two && two < three && three > one)
 	{
-		ra(pkg);
+		sa(pkg);
 	}
-	else if (one < two && two > three && one < three)
+	else if (one < two && two > three && three > one)
 	{
 		sa(pkg);
 		ra(pkg);
 	}
-	else if (one < two && two > three && one > three)
+	else if (one < two && two > three && three < one)
 	{
 		rra(pkg);
 	}
+	else
+		printf("none");
 	/*if (one > three)
 	{
 		sa(pkg);
 		rra(pkg);
-		//ra(pkg);
-		//ra(pkg);
 	}
-	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
 	if (one > two)
 		sa(pkg);
 	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
@@ -131,7 +126,6 @@ void	sort_three_a(t_meta *pkg, int	one, int two, int three)
 	}
 	update_onetwothree(pkg->list_a_head, &one, &two, &three);	
 	if (one > two)
-<<<<<<< HEAD
 	{
 		sa(pkg);
 	}*/
@@ -167,10 +161,8 @@ void	sort_three_faster(t_meta	*pkg)
 	{
 		rra(pkg);
 	}
-=======
 		sa(pkg);
 	printf("a sorted successfully (hopefully)");
->>>>>>> ebd1836cd884a375ae73a28d776ce7abc29f8f2a
 }
 
 void	sort_three_b(t_meta *pkg, int	one, int two, int three)

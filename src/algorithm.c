@@ -4,10 +4,8 @@ void	sort(t_meta	*pkg)
 {
 	if (pkg->a_size == 2)
 		sort_two(pkg);
-	else if (pkg->a_size < 4)
+	else if (pkg->a_size == 3)
 		fast_sort(pkg);
-	else if (pkg->a_size < 7)
-		sort_six(pkg);
 	else
 		split_in_groups(pkg);
 }
@@ -18,10 +16,7 @@ void	split_in_groups(t_meta	*pkg)
 	int	min;
 	t_list	*top;
 
-<<<<<<< HEAD
 	pivot = pkg->a_size;
-=======
->>>>>>> ebd1836cd884a375ae73a28d776ce7abc29f8f2a
 	pivot = choose_pivot(pkg->list_a_head, pkg->a_size); 
 	while (pkg->a_size > 1)
 	{
