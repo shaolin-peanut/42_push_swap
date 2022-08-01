@@ -8,9 +8,9 @@ void	sort(t_meta	*pkg)
 		split_in_groups(pkg);
 }
 
-void	split_in_groups(pkg)
+void	split_in_groups(t_meta	*pkg)
 {
 	int	pivot;
 
-	pivot = pkg->a_size / 
+	pivot = pkg->a_size;
 }

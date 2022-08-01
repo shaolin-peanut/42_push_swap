@@ -96,6 +96,38 @@ void	sort_three(t_meta *pkg, int	one, int two, int three)
 		sa(pkg);
 	}*/
 }
+void	sort_three_faster(t_meta	*pkg)
+{
+	t_list	*one;
+	t_list	*two;
+	t_list	*three;
+
+	one = pkg->list_a_head;
+	two = one->next;
+	three = two->next;
+	if (one > two && two < three)
+	{
+		sa(pkg);
+	}
+	else if (one > two && two > three)
+	{
+		sa(pkg);
+		rra(pkg);
+	}
+	else if (one > two && two < three)
+	{
+		ra(pkg);
+	}
+	else if (one < two && two > three)
+	{
+		sa(pkg);
+		ra(pkg);
+	}
+	else if (one < two && two > three)
+	{
+		rra(pkg);
+	}
+}
 
 /*void	bubble_sort(t_meta	*pkg)
 {
