@@ -60,13 +60,20 @@ int	pa(t_meta	*pkg)
 	t_list	*a_head;
 	t_list	*b_head;
 
-	if (pkg->b_size < 2)
+	if (pkg->b_size < 1)
 		return (0);
 	// cut b_head and relink meta to next b node
 	a_head = pkg->list_a_head;
 	b_head = pkg->list_b_head;
-	pkg->list_b_head = pkg->list_b_head->next;
-	pkg->list_b_head->previous = NULL;
+	if (pkg->b_size == 1)
+	{
+		pkg->list_b_head = NULL;
+	}
+	else
+	{
+		pkg->list_b_head = pkg->list_b_head->next;
+		pkg->list_b_head->previous = NULL;
+	}
 	// push b_head on a list
 	connect_ab(b_head, a_head);
 	pkg->list_a_head = b_head;

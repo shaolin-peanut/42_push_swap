@@ -53,7 +53,29 @@ void	fast_sort(t_meta *pkg)
 // which is done 
 void	sort_three(t_meta *pkg, int	one, int two, int three)
 {
-	if (one > three)
+	if (one > two && two < three && one < three)
+	{
+		sa(pkg);
+	}
+	else if (one > two && two > three && one > three)
+	{
+		sa(pkg);
+		rra(pkg);
+	}
+	else if (one > two && two < three && one > three)
+	{
+		ra(pkg);
+	}
+	else if (one < two && two > three && one < three)
+	{
+		sa(pkg);
+		ra(pkg);
+	}
+	else if (one < two && two > three && one > three)
+	{
+		rra(pkg);
+	}
+	/*if (one > three)
 	{
 		sa(pkg);
 		rra(pkg);
@@ -73,26 +95,6 @@ void	sort_three(t_meta *pkg, int	one, int two, int three)
 	update_onetwothree(pkg, &one, &two, &three);	
 	if (one > two)
 	{
-		sa(pkg);
-	}
-	/*if (two > onedd && one > three)
-		sa(pkg);
-	else if (two > three && three > one)
-		rra(pkg);
-	else if (one > three && three > two)
-	{
-		rra(pkg);
-		sa(pkg);
-	}
-	else if (three > two && two > one)
-	{
-		ra(pkg);
-		sa(pkg);
-	}
-	else
-	{
-		sa(pkg);
-		rra(pkg);
 		sa(pkg);
 	}*/
 }

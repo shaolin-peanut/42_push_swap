@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+// FUNCTION COUNT : 5
+
 t_list	*init_list(t_meta	*pkg)
 {
 		t_list *list;
