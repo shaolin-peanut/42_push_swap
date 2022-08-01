@@ -25,6 +25,7 @@ struct s_meta
 
 // algorithm.c
 void	sort(t_meta	*pkg);
+void	split_in_groups(t_meta	*pkg);
 // processing.c
 int war_room(int	c, char    **argv);
 // operations.c
