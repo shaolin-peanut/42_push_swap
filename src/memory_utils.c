@@ -27,7 +27,7 @@ void	errormsg(char *msg, t_meta	*pkg)
 
 void	free_all(t_meta	*pkg)
 {
-	printf("Size of a: %d\n", pkg->a_size);
+	//printf("Size of a: %d\n", pkg->a_size);
 	//printf("Size of b: %d\n", pkg->b_size);
 	//printf("pkg->list_a_butt: %p\n", pkg->list_a_butt);
 	//printf("pkg->list_b_butt: %p\n", pkg->list_b_butt);

@@ -22,7 +22,6 @@ int	is_sorted(t_list	*head)
 	{
 		if (head->num > head->next->num)
 			return (-1);
-		//printf("is_sorted() comparing %d and %d\n", head->num, head->next->num);
 		head = head->next;
 	}
 	return (1);
