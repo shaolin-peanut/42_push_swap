@@ -8,8 +8,8 @@ void	sort(t_meta	*pkg)
 		sort_three(pkg);
 	else if (pkg->a_size == 5)
 		sort_five(pkg);
-	else
-		split_in_groups(pkg);
+	//else
+	//	split_in_groups(pkg);
 }
 
 void	split_in_groups(t_meta	*pkg)

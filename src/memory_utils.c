@@ -22,7 +22,7 @@ void	errormsg(char *msg, t_meta	*pkg)
 	while (msg[++i])
 		write(2, &msg[i], 1);
 	free_all(pkg);
-	exit(EXIT_FAILURE);			
+	exit(EXIT_FAILURE);	
 }
 
 void	free_all(t_meta	*pkg)

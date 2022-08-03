@@ -21,18 +21,22 @@ int	check_repetitions(int	num, t_meta	*pkg)
 int	war_room(int c, char	**argv)
 {
 	int	i;
+	int j;
 	int	tmp_num;
 	t_meta	*pkg;
 
 	i = c;
+	j = 0;
 	pkg = NULL;
 	pkg = init_pkg(pkg);
 	tmp_num = 0;
-	while (--i > 0)
+	while (--i > 0 && ++j != 0)
 	{
 		// Don't forget to check min and max int
+		if (*argv[i] == '0')
+			errormsg("don't enter zeros!", pkg);
 		if ((tmp_num = ft_atoi(argv[i])) == 0)
-			errormsg("Error!\n", pkg);
+			errormsg("Atoi error!\n", pkg);
 		if (check_repetitions(tmp_num, pkg) == -1)
 			errormsg("Error!\n", pkg);
 		else
@@ -40,7 +44,10 @@ int	war_room(int c, char	**argv)
 		//printf("tmp_num:%d\n", tmp_num);
 	}
 	if (is_sorted(pkg->list_a_head) == -1)
+	{
+		replace_by_tidy_num(pkg);
 		sort(pkg);
+	}
 	free_all(pkg);
 	return (1);
 }
