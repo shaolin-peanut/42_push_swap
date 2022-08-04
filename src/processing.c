@@ -34,21 +34,16 @@ int	war_room(int c, char	**argv)
 	{
 		// Don't forget to check min and max int
 		if (*argv[i] == '0')
-			errormsg("don't enter zeros!", pkg);
-		if ((tmp_num = ft_atoi(argv[i])) == 0)
+			tmp_num = 0;
+		else if ((tmp_num = ft_atoi(argv[i])) == 0)
 			errormsg("Atoi error!\n", pkg);
 		if (check_repetitions(tmp_num, pkg) == -1)
 			errormsg("Error!\n", pkg);
 		else
 			pkg->list_a_head = put(tmp_num, pkg);
-		//printf("tmp_num:%d\n", tmp_num);
 	}
 	if (is_sorted(pkg->list_a_head) == -1)
-	{
-		replace_by_tidy_num(pkg);
 		sort(pkg);
-	}
 	free_all(pkg);
 	return (1);
 }
-

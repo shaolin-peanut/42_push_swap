@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/04 16:30:39 by sbars             #+#    #+#             */
+/*   Updated: 2022/08/04 16:32:07 by sbars            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int get_sqrt(int nbr)
+int	get_sqrt(int nbr)
 {
-	int sqrt;
+	int	sqrt;
 
 	if (nbr < 0)
 		return (0);
@@ -11,9 +23,9 @@ int get_sqrt(int nbr)
 	{
 		sqrt++;
 		if (sqrt * sqrt == nbr)
-			return (sqrt / 1.5);							
+			return (sqrt / 1.5);
 	}
-	return (sqrt / 1.5);					
+	return (sqrt / 1.5);
 }
 
 int	is_sorted(t_list	*head)
