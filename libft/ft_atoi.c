@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 10:39:13 by sbars             #+#    #+#             */
-/*   Updated: 2021/11/08 12:32:02 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/03 13:47:04 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,31 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (str[i - 1] - 48);
 	return (result * sign);
 }
+
+/*int	ft_atoi(const char *str)
+{
+	int	i;
+	int	res;
+	int	nv;
+
+	nv = 1;
+	res = 0;
+	i = 0;
+	while (str[i] == 32 || (str[i] >= 8 && str[i] <= 13))
+		i++;
+	if (str[i] == 45)
+	{
+		nv = -1;
+		i++;
+	}
+	else if (str[i] == 43)
+	{
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - '0';
+		i++;
+	}
+	return (res * nv);
+}*/

@@ -1,56 +1,61 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/21 14:19:55 by ebennace          #+#    #+#              #
+#    Updated: 2022/08/11 15:13:10 by sbars            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 NAME = push_swap
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+SRCS		= 	./src/main.c \
+				./src/processing.c \
+				./src/operations.c \
+				./src/operations_bis.c \
+				./src/memory_utils.c \
+				./src/list_utils.c \
+				./src/small_algorithms.c \
+				./src/algorithm.c \
+				./src/descretize_stack.c \
+				./src/utils.c
 
-AR = ar -rc
+OBJS			= $(SRCS:.c=.o)
+CC				= clang
+FLAGS 			= -g
+SANITIZE		= -fsanitize=address
 
-SRCS_DIR = ./src
+$(NAME) : 		$(OBJS)
+				make -C libft
+				$(CC) $(FLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
-OBJS_DIR = ./objs
-INC_DIR = .
-LIBFT_DIR = ./libft
-LIBFT = libft.a
+all : 			$(NAME)
 
-SRCS = main.c \
-		processing.c \
-		operations.c \
-		operations_bis.c \
-		memory_utils.c \
-		list_utils.c \
-		small_algorithms.c \
-		algorithm.c \
-		descretize_stack.c \
-		utils.c
-
-OBJS = $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
-
-vpath %.c $(SRCS_DIR)
-
-RM = rm -f
-
-all : $(NAME)
-
-$(NAME) : $(OBJS)
-	echo "Compling libft..."
-	@$(MAKE) -C $(LIBFT_DIR)
-	echo "Libft has been compiled..."
-	echo "Compiling push_swap"
-	@$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft
-	echo "push_swap has been compiled..."
-
-$(OBJS_DIR) :
-	@mkdir -p $(OBJS_DIR)
-
-$(OBJS_DIR)/%.o : %.c | $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -o $@ -I $(INC_DIR) -I$(LIBFT_DIR) -c $^
+%.o: %.c
+				$(CC) -c $(FLAGS) -o $@ $^
 
 clean :
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	#@$(MAKE) -C fclean
-	@$(RM) -r $(OBJS_DIR)
+				make clean -C libft
+				/bin/rm -rf $(OBJS)
 
 fclean : clean
-	@$(RM) $(NAME)
+				make fclean -C libft
+				/bin/rm -rf $(NAME)
+sanitize : 		$(OBJS)
+				$(CC) $(FLAGS) $(SANITIZE) $(OBJS) libft/libft.a -o $(NAME)
+				./$(NAME) "6 -769 2 165"
+				
+
+test : 
+				./$(NAME)  `python3 visualiser_generator/generator.py 0 1000 200`
+
+lldb:
+				$(CC) -g $(SRCS) libft/libft.a -o $(NAME)
+				lldb $(NAME)
 
 re : fclean all
+.PHONY			: all clean fclean re

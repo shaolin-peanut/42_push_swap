@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/05 16:25:09 by sbars             #+#    #+#             */
+/*   Updated: 2022/08/11 15:22:17 by sbars            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
+// REMOVE AFTER
+#include <stdio.h>
 
 t_meta	*init_pkg(t_meta *pkg)
 {
 	pkg = (t_meta *)malloc(sizeof(t_meta) * 1);
 	if (!pkg)
-		errormsg("pkg malloc error!\n", pkg);
+		errormsg("Error\n", pkg);
 	pkg->list_a_head = 0;
 	pkg->list_a_butt = 0;
 	pkg->a_size = 0;
@@ -22,32 +35,28 @@ void	errormsg(char *msg, t_meta	*pkg)
 	while (msg[++i])
 		write(2, &msg[i], 1);
 	free_all(pkg);
-	exit(EXIT_FAILURE);	
+	exit(EXIT_FAILURE);
 }
 
 void	free_all(t_meta	*pkg)
 {
-	//printf("Size of a: %d\n", pkg->a_size);
-	//printf("Size of b: %d\n", pkg->b_size);
-	//printf("pkg->list_a_butt: %p\n", pkg->list_a_butt);
-	//printf("pkg->list_b_butt: %p\n", pkg->list_b_butt);
 	if (pkg->list_a_head != 0)
-		free_list('a', pkg->list_a_head);
+		free_list(pkg->list_a_head);
 	if (pkg->list_b_head != 0)
-		free_list('b', pkg->list_b_head);
-	// The free list function should take care of the list butts, in theory. Maybe have to be freed, or at least set to NUll?
+		free_list(pkg->list_b_head);
 	free(pkg);
 }
 
-void	free_list(char	id, t_list *list)
+void	free_list(t_list *list)
 {
 	t_list	*current_node;
 
-	(void) id;
 	current_node = NULL;
-	while(list != NULL)
+	while (list != NULL)
 	{
-		printf("%c:%p:num %d->prev:%p\n", ft_toupper(id), list, list->num, list->previous);
+	//	ft_putnbr_fd(list->num, 1);
+	//	write(1, "\n", 1);	
+//		printf("%d\n", list->num);
 		current_node = list;
 		list = list->next;
 		free(current_node);

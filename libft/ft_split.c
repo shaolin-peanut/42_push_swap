@@ -6,13 +6,29 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:12:30 by sbars             #+#    #+#             */
-/*   Updated: 2021/11/03 15:12:33 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/11 14:04:49 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <ctype.h>
+
+int	count_digits(char const *s2, char sep)
+{
+	int	count;
+	int	i;
+
+	count = 1;
+	i = 0;
+	while (s2[i])
+	{
+		if (s2[i] == sep && ((ft_isdigit(s2[i + 1]) || s2[i + 1] == '-')))
+			count++;
+		i++;
+	}
+	return (count);
+}
 
 int	count_strings(char const *s2, char sep)
 {
@@ -59,7 +75,7 @@ char	**ft_split(char const *s1, char c)
 	tabs = -1;
 	if (s1 == NULL)
 		return (NULL);
-	tab = malloc((count_strings(s1, c)) * sizeof(char *));
+	tab = malloc((count_digits(s1, c)) * sizeof(char *));
 	if (tab)
 	{
 		while (s1[++i])

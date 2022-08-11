@@ -1,34 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/05 16:19:08 by sbars             #+#    #+#             */
+/*   Updated: 2022/08/05 16:24:07 by sbars            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // FUNCTION COUNT : 5
 
 t_list	*init_list(t_meta	*pkg)
 {
-		t_list *list;
+	t_list	*list;
 
-		list = (t_list *) malloc(sizeof(t_list) * 1);
-		if (list == NULL)
-			errormsg("Malloc error\n", pkg);
-		list->num = 0;
-		list->next = 0;
-		list->previous = 0;
-		return (list);	
+	list = (t_list *) malloc(sizeof(t_list) * 1);
+	if (list == NULL)
+		errormsg("Malloc error\n", pkg);
+	list->num = 0;
+	list->next = 0;
+	list->previous = 0;
+	return (list);
 }
 
-t_list	*put(int	num, t_meta	*pkg)
+t_list	*put(int num, t_meta *pkg)
 {
 	t_list	*new;
 
 	new = init_list(pkg);
 	new->num = num;
-	//printf("new->num:%d\n", new->num);
-	// if there's an existing node, link new to current top.
 	if (pkg->list_a_head != NULL)
 	{
 		new->next = pkg->list_a_head;
 		new->next->previous = new;
 	}
-	pkg->a_size++;	
+	pkg->a_size++;
 	return (new);
 }
 
@@ -36,7 +46,6 @@ void	update_list_butt(t_meta	*pkg)
 {
 	t_list	*node;
 
-	// Find list A's end
 	if (pkg->list_a_head != NULL)
 	{
 		node = pkg->list_a_head;
@@ -44,11 +53,10 @@ void	update_list_butt(t_meta	*pkg)
 			node = node->next;
 		pkg->list_a_butt = node;
 	}
-	// Find list B's end
 	if (pkg->list_b_head != NULL)
 	{
 		node = pkg->list_b_head;
-		while(node->next != NULL)
+		while (node->next != NULL)
 			node = node->next;
 		pkg->list_b_butt = node;
 	}
@@ -68,15 +76,16 @@ void	connect_ab(t_list	*a, t_list	*b)
 	}
 }
 
-t_list *save_and_cut_head(char id, t_meta *pkg)
+t_list	*save_and_cut_head(char id, t_meta *pkg)
 {
-	t_list*				head;
+	t_list	*head;
+
 	if (id == 'a')
 	{
 		head = pkg->list_a_head;
 		pkg->list_a_head = pkg->list_a_head->next;
 		pkg->list_a_head->previous = NULL;
-		head->next = NULL;									
+		head->next = NULL;
 	}
 	if (id == 'b')
 	{
@@ -86,5 +95,5 @@ t_list *save_and_cut_head(char id, t_meta *pkg)
 			pkg->list_b_head->previous = NULL;
 		head->next = NULL;
 	}
-	return (head);					
+	return (head);
 }

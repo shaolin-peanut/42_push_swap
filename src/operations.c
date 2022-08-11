@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:03:05 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/04 17:03:15 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/10 11:08:42 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	sa(t_meta	*pkg)
 	if (node_c != NULL)
 		node_c->previous = node_a;
 	pkg->list_a_head = node_b;
-	printf("sa\n");
+	write(1, "sa\n", 3);
 	return (0);
 }
 
@@ -56,7 +56,7 @@ int	sb(t_meta	*pkg)
 	if (node_c != NULL)
 		node_c->previous = node_a;
 	pkg->list_b_head = node_b;
-	printf("sb\n");
+	write(1, "sb\n", 3);
 	return (0);
 }
 
@@ -92,7 +92,7 @@ int	pa(t_meta	*pkg)
 	update_list_butt(pkg);
 	pkg->a_size++;
 	pkg->b_size--;
-	printf("pa\n");
+	write(1, "pa\n", 3);
 	return (0);
 }
 
@@ -114,6 +114,6 @@ int	pb(t_meta	*pkg)
 	update_list_butt(pkg);
 	pkg->a_size--;
 	pkg->b_size++;
-	printf("pb\n");
+	write(1, "pb\n", 3);
 	return (0);
 }
