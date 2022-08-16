@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:03:05 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/10 11:08:42 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/16 16:29:09 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	sa(t_meta	*pkg)
 
 	if (pkg->a_size < 2)
 		return (0);
-	// set placeholders
 	node_a = pkg->list_a_head;
 	node_b = node_a->next;
 	node_c = node_b->next;
-	// swap
 	node_b->next = node_a;
 	node_a->previous = node_b;
 	node_b->previous = NULL;
@@ -44,11 +42,9 @@ int	sb(t_meta	*pkg)
 
 	if (pkg->b_size < 2)
 		return (0);
-	// set placeholders
 	node_a = pkg->list_b_head;
 	node_b = node_a->next;
 	node_c = node_b->next;
-	// swap
 	node_b->next = node_a;
 	node_a->previous = node_b;
 	node_b->previous = NULL;
@@ -74,7 +70,6 @@ int	pa(t_meta	*pkg)
 
 	if (pkg->b_size < 1)
 		return (0);
-	// cut b_head and relink meta to next b node
 	a_head = pkg->list_a_head;
 	b_head = pkg->list_b_head;
 	if (pkg->b_size == 1)
@@ -86,7 +81,6 @@ int	pa(t_meta	*pkg)
 		pkg->list_b_head = pkg->list_b_head->next;
 		pkg->list_b_head->previous = NULL;
 	}
-	// push b_head on a list
 	connect_ab(b_head, a_head);
 	pkg->list_a_head = b_head;
 	update_list_butt(pkg);
@@ -103,12 +97,10 @@ int	pb(t_meta	*pkg)
 
 	if (pkg->a_size < 2)
 		return (0);
-	// save a_head and link meta to next a node
 	b_head = pkg->list_b_head;
 	a_head = pkg->list_a_head;
 	pkg->list_a_head = pkg->list_a_head->next;
 	pkg->list_a_head->previous = NULL;
-	// push a_head on b list
 	connect_ab(a_head, b_head);
 	pkg->list_b_head = a_head;
 	update_list_butt(pkg);

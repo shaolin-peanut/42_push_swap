@@ -6,7 +6,7 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/21 14:19:55 by ebennace          #+#    #+#              #
-#    Updated: 2022/08/11 15:13:10 by sbars            ###   ########.fr        #
+#    Updated: 2022/08/16 16:24:37 by sbars            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS		= 	./src/main.c \
 				./src/small_algorithms.c \
 				./src/algorithm.c \
 				./src/descretize_stack.c \
-				./src/utils.c
+				./src/utils.c \
+				./src/utils2.c
 
 OBJS			= $(SRCS:.c=.o)
 CC				= clang

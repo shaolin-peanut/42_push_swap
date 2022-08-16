@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:02:21 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/11 10:42:26 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/16 16:29:32 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -14,10 +14,10 @@
 void	sort(t_meta	*pkg)
 {
 	if (pkg->a_size == 2)
-		sort_two(pkg);
+		sa(pkg);
 	else if (pkg->a_size == 3)
 		sort_three(pkg);
-	else if (pkg->a_size <= 12)
+	else if (pkg->a_size < 13)
 		sort_small(pkg);
 	else
 		radix_sort(pkg);
@@ -25,7 +25,6 @@ void	sort(t_meta	*pkg)
 
 t_radix	init_radix(t_radix	*data)
 {
-	data->max_num = 0;
 	data->max_bits = 0;
 	data->i = 0;
 	data->j = 0;
@@ -41,10 +40,6 @@ int	finer_max_bits(t_meta	*pkg)
 
 	i = 0;
 	max = pkg->a_size - 1;
-	/*while ((max >> i) != 1)
-		i++;
-	while (max >> i)
-		i++;*/
 	while (max >> i != 0)
 		i++;
 	max = i;
@@ -59,20 +54,13 @@ void	radix_sort(t_meta	*pkg)
 	rad.i = -1;
 	rad.j = -1;
 	rad.size = pkg->a_size;
-	//rad.max_num = rad.size - 1;
-	rad.max_bits = finer_max_bits(pkg);
 	replace_by_tidy_num(pkg);
-	//while (++rad.i < rad.max_bits)
-	while (is_sorted(pkg->list_a_head) != 1)
+	rad.max_bits = finer_max_bits(pkg);
+	while (++rad.i < rad.max_bits)
 	{
-		++rad.i;
-		/*rad.j = rad.size;
-		while (++rad.j < rad.size)*/
-		//rad.j = pkg->a_size;
 		rad.j = -1;
 		while (++rad.j < rad.size)
 		{
-			//rad.num = pkg->list_a_head->num;
 			if (((pkg->list_a_head->num >> rad.i) & 1) == 1)
 				ra(pkg);
 			else

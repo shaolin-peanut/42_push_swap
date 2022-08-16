@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 16:25:09 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/11 15:22:17 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/16 16:28:37 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -54,9 +54,6 @@ void	free_list(t_list *list)
 	current_node = NULL;
 	while (list != NULL)
 	{
-	//	ft_putnbr_fd(list->num, 1);
-	//	write(1, "\n", 1);	
-//		printf("%d\n", list->num);
 		current_node = list;
 		list = list->next;
 		free(current_node);

@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:59:42 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/09 14:36:32 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/16 16:30:04 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ int	replace_by_tidy_num(t_meta	*pkg)
 		while (++j < pkg->a_size)
 		{
 			if (node->num == copy[j])
+			{
 				node->num = j;
+				break ;
+			}
 		}
 		node = node->next;
 	}

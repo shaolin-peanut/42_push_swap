@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 16:24:16 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/15 15:57:37 by sbars            ###   ########.fr       */
+/*   Created: 2022/08/16 16:23:48 by sbars             #+#    #+#             */
+/*   Updated: 2022/08/16 16:36:45 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_isnumber(char	*str)
 {
-	if (argc < 2)
-		return (1);
-	else if (argc == 2)
-		parsing_one_arg(argc, argv);
-	else
-		parsing_multi_args(argc, argv);
-	return (0);
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (ft_isdigit(str[i] != 1))
+			return (-1);
+	}
+	return (1);
+}
+
+int	ft_tablen(char	**tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab[++i])
+		;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:30:25 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/11 11:33:49 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/16 16:36:05 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ struct s_meta
 
 typedef struct s_radix
 {
-	int	max_num;
 	int	max_bits;
 	int	i;
 	int	j;
@@ -62,7 +61,8 @@ void	split_in_groups(t_meta	*pkg);
 int		choose_pivot(t_list	*list, int limit);
 void	split_in_groups(t_meta	*pkg);
 // processing.c
-int		war_room(int c, char **argv);
+int		parsing_multi_args(int c, char **argv);
+int		parsing_one_arg(int c, char **argv);
 // list_utils.c
 t_list	*init_list(t_meta	*pkg);
 t_list	*put(int num, t_meta *pkg);
@@ -80,6 +80,9 @@ void	print_list(int id, t_meta *pkg);
 int		is_sorted(t_list	*head);
 int		list_min(t_list	*list, int limit);
 int		list_max(t_list	*list, int limit);
+// utils2.c
+int		ft_isnumber(char	*str);
+int		ft_tablen(char	**tab);
 // descretize_stack.c
 int		replace_by_tidy_num(t_meta	*pkg);
 // operations.c
@@ -95,6 +98,6 @@ int		rr(char sign, t_meta *pkg);
 void	ss(t_meta	*pkg);
 int		choose_pivot(t_list	*list, int limit);
 // libft
-int	count_digits(char	const *s2, char sep);
+int		count_digits(char	const *s2, char sep);
 
 #endif
