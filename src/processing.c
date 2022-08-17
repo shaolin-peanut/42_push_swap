@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 14:25:34 by sbars             #+#    #+#             */
-/*   Updated: 2022/08/17 16:33:36 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/17 16:47:04 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -90,7 +90,6 @@ int	parsing_one_arg(int c, char	**argv)
 	pkg = init_pkg(pkg);
 	str = ft_split(argv[1], ' ');
 	i = ft_tablen(str);
-	str[i] = NULL;
 	while (--i > -1)
 	{
 		if (ft_isnumber(str[i]) != 1)
