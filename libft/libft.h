@@ -6,7 +6,7 @@
 /*   By: sbars <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 14:53:57 by sbars             #+#    #+#             */
-/*   Updated: 2021/10/14 14:54:00 by sbars            ###   ########.fr       */
+/*   Updated: 2022/08/17 15:33:43 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -39,7 +39,8 @@ int		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_atoi(const char *str);
+//int		ft_atoi(const char *str);
+long long ft_atoi(const char *str);
 // malloc func 1
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
